@@ -21,6 +21,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@500;700&family=Saira+Condensed:ital,wght@0,600;0,800;1,800&family=Saira:wght@400;500;600&display=swap">
 <style>
+[hidden]{display:none!important}
 /* Layout: full-bleed WebGL world; compact F1-style timing box top-left, minimap + tower top-right, speed bottom-centre; dark paddock overlays for menus */
 :root{
   --ink:#0c0f11;
@@ -721,7 +722,7 @@ if (settings.assist === 'on') settings.assist = 'light';
 const IS_TOUCH = !!(window.matchMedia && matchMedia('(pointer: coarse)').matches);
 if (IS_TOUCH && !store.get('ggp.gfxSet', false)){ settings.gfx = 'low'; store.set('ggp.gfxSet', true); }
 if (!settings.brakeA) settings.brakeA = 'off';
-if (!['medium','high','ultra'].includes(settings.gfx)) settings.gfx = 'high';
+if (!['low','medium','high','ultra'].includes(settings.gfx)) settings.gfx = 'high';
 const saveSettings = () => store.set('ggp.settings', settings);
 
 /* ================= data ================= */
@@ -3175,7 +3176,7 @@ function withLoading(o, fn){
   const t0 = performance.now();
   requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(() => {
     try { const w = getWorld(tr); buildGrass(tr, w); if (night) nightAssets(tr); } catch(e){}
-    fn();
+    try { fn(); } catch(e){ console.error(e); }
     const wait = Math.max(0, 900 - (performance.now() - t0));
     setTimeout(() => requestAnimationFrame(() => { el.classList.add('out'); setTimeout(() => { el.hidden = true; }, 380); }), wait);
   }, 30)));
