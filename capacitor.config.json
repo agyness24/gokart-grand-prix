@@ -1,0 +1,6 @@
+{
+  "appId": "com.gokartgp.game",
+  "appName": "Gokart Grand Prix",
+  "webDir": "web",
+  "android": { "backgroundColor": "#0b0d0f", "allowMixedContent": false }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Gokart Grand Prix",
+  "short_name": "Gokart GP",
+  "description": "3D kart racing: championship, time attack, split screen and online races.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#0b0d0f",
+  "theme_color": "#0b0d0f",
+  "categories": ["games", "sports"],
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}

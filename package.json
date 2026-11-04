@@ -1,0 +1,53 @@
+{
+  "name": "gokart-grand-prix",
+  "productName": "Gokart Grand Prix",
+  "version": "1.0.0",
+  "description": "3D kart racing: championship, time attack, split screen and online races",
+  "main": "electron/main.js",
+  "author": "Gokart Grand Prix",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win --publish never",
+    "dist:mac": "electron-builder --mac --publish never",
+    "dist:linux": "electron-builder --linux --publish never"
+  },
+  "devDependencies": {
+    "electron": "33.2.1",
+    "electron-builder": "25.1.8"
+  },
+  "build": {
+    "appId": "com.gokartgp.game",
+    "productName": "Gokart Grand Prix",
+    "copyright": "Gokart Grand Prix",
+    "files": ["electron/**", "web/**", "build/icon.png", "package.json"],
+    "directories": { "output": "dist", "buildResources": "build" },
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }, { "target": "portable", "arch": ["x64"] }],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Gokart Grand Prix",
+      "artifactName": "Gokart-Grand-Prix-Setup.${ext}"
+    },
+    "portable": { "artifactName": "Gokart-Grand-Prix-Portable.${ext}" },
+    "mac": {
+      "target": [{ "target": "dmg", "arch": ["universal"] }],
+      "icon": "build/icon.png",
+      "category": "public.app-category.racing-games",
+      "identity": "-",
+      "artifactName": "Gokart-Grand-Prix-Mac.${ext}"
+    },
+    "linux": {
+      "target": [{ "target": "AppImage", "arch": ["x64"] }],
+      "icon": "build/icon.png",
+      "category": "Game",
+      "artifactName": "Gokart-Grand-Prix-Linux.${ext}"
+    }
+  }
+}
